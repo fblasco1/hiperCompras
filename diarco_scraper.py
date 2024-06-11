@@ -43,7 +43,7 @@ def scrape_diarco_offers(url):
         try:
             title = offer.find_element(By.CLASS_NAME, "product_title").text
             price = offer.find_element(By.CLASS_NAME, "price-container").text
-            #description_html = offer.find_element(By.XPATH, "/div/div/div[3]/div[3]/div/h2").get_attribute('outerHTML')
+            #description_html = offer.find_element(By.XPATH, "/div/div/div[3]/div[3]/div/h2")
             #description_md = convert_html_to_markdown(description_html, title)
             
             ## Save to a Markdown file
