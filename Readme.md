@@ -1,3 +1,9 @@
+# Herramienta de compras optimizadas.
+
+Este proyecto consiste en desarrollar una herramienta que permita a organizaciones sociales reducir los costos de los alimentos que compran para los espacios comunitarios donde brindan alimentos de forma gratuita. Esto requiere poder comparar precios del mismo producto en distintas presentaciones, marcas y proveedores. Para eso es necesario procesar información que no se encuentra estructurada y está en dos grandes fuentes de datos que son los presupestos generados por los proveedores y por otro la información disponible en la web. Una vez sistematizada la información queda el desafío de realizar la comparación y selección de la compra.
+
+# Proyecto OCR para procesar presupuestos. 
+
 # Proyecto de Web Scraping de Ofertas de Hipermercados
 
 Este proyecto consiste en un script de web scraping desarrollado en Python utilizando Selenium para obtener las ofertas de productos de la cadena de supermercados Diarco y realizar análisis de los datos obtenidos.
