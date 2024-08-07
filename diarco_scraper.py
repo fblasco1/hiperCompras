@@ -2,8 +2,9 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.chrome.service import Service
-from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support.ui import WebDriverWait, Select
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 from time import sleep
 import chromedriver_py
 
@@ -33,12 +34,15 @@ def extract_info(offer, tag):
         description = " ".join([elem.text for elem in description_elements if 'Cód:' not in elem.text])
         
         # Código del producto
-        code_element = offer.find_element(By.XPATH, ".//h2[contains(text(), 'Cód:')]")
-        code = code_element.text.split(': ')[1] if code_element else "No code found"
+        try:
+            code_element = offer.find_element(By.XPATH, ".//h2[contains(text(), 'Cód:')]")
+            code = code_element.text.split(': ')[1] if code_element else "No code found"
+        except:
+            pass
         
         # Marca del producto
         try:
-            brand_element = offer.find_element(By.XPATH, ".//span[contains(@class, 'yith_product_brand')]")
+            brand_element = offer.find_element(By.XPATH, ".//h2[contains(@class, 'elementor-heading-title')]/span")
             brand = brand_element.text
         except:
             brand = "No brand found"
@@ -54,11 +58,11 @@ def extract_info(offer, tag):
                 "Oferta": False
             }
         elif 'product_tag-promo' in tag:
-            discount = offer.find_element(By.CLASS_NAME, "custom-decimal").text
-            discount_final = offer.find_element(By.CLASS_NAME, "custom-decimal-final").text
+            discount = offer.find_element(By.CLASS_NAME, "price-container").text
+            discount_final = offer.find_element(By.CLASS_NAME, "custom-decimal").text
             return {
                 "Tipo": "Promo",
-                "Descuento": f"{discount}{discount_final}",
+                "Descuento": f"{discount}{discount_final}".replace('\n', '').replace('dto.%', ''),
                 "Producto": title,
                 "Marca": brand,
                 "Descripción": description,
@@ -67,9 +71,9 @@ def extract_info(offer, tag):
         elif 'product_tag-super-descuento' in tag:
             return {
                 "Tipo": "Super Descuento",
-                "Descuento": price,
-                "Producto": title,
-                "Marca": brand
+                "Descuento": price.replace('\n', '').replace('dto.%', ''),
+                "Descripcion": title,
+                "Oferta": True
             }
         elif 'product_tag-oferta' in tag:
             return {
@@ -100,7 +104,6 @@ def extract_info(offer, tag):
             return {
                 "Tipo": "Estandar Naranja",
                 "Producto": title,
-                "Marca": brand,
                 "Precio": price,
                 "Descripción": description,
                 "Código": code
@@ -112,17 +115,29 @@ def extract_info(offer, tag):
         driver.save_screenshot(f"error_screenshot_{tag}.png")
         return None
 
+# Función para desplazarse hasta el final de la página
+def scroll_to_bottom(driver, pause_time=3):
+    last_height = driver.execute_script("return document.body.scrollHeight")
+    
+    while True:
+        # Desplazarse hasta el final de la página
+        driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
+        # Esperar a que se carguen los nuevos elementos
+        sleep(pause_time)
+        # Calcular nueva altura de la página
+        new_height = driver.execute_script("return document.body.scrollHeight")
+        # Salir del bucle si no hay más contenido que cargar
+        if new_height == last_height:
+            break
+        last_height = new_height
+
 def scrape_diarco_offers(url):
     try:
         driver.get(url)
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
         sleep(5)  # Wait for the page to load
 
-        # Scroll down to load more products
-        body = driver.find_element(By.TAG_NAME, 'body')
-        for _ in range(5):  # Adjust the number of times to scroll as needed
-            body.send_keys(Keys.PAGE_DOWN)
-            sleep(3)  # Adjust the wait time as needed
+        scroll_to_bottom(driver, 10)
 
         # Fetch offer details
         offers = driver.find_elements(By.XPATH, "/html/body/div[2]/div[4]/div[2]/div[2]/div/div[1]/div")
@@ -153,9 +168,36 @@ def scrape_diarco_offers(url):
     finally:
         driver.quit()
 
-# URL to scrape
-url = "https://www.diarco.com.ar/ofertas/?e-filter-9a897e7-sucursal=9-de-julio&e-filter-9a897e7-product_cat=almacen&tipo-sucursal=mayorista"
-offers_info = scrape_diarco_offers(url)
+driver.get('https://www.diarco.com.ar/ofertas/')
+
+# Encontrar el botón por ID y hacer clic
+button = driver.find_element(By.ID, "mayorista-btn")
+ActionChains(driver).move_to_element(button).click(button).perform()
+sleep(3)
+
+# Iterate through each branch, skipping disabled options
+branch_select = Select(driver.find_element(By.ID, "mayorista-dropdown"))
+
+all_branches_offers = []
+
+for option in branch_select.options:
+    if option.get_attribute('disabled'):
+        continue  # Skip disabled options
+
+    branch_name = option.text
+    if branch_name == "Seleccioná una sucursal":
+        continue
+    print(f"Processing branch: {branch_name}")
+
+    # Select the branch
+    branch_select.select_by_visible_text(branch_name)
+    sleep(5)  # Wait for the page to load
+
+    # Update the URL based on selected branch if needed
+    current_url = driver.current_url
+    offers_info = scrape_diarco_offers(current_url)
+    all_branches_offers.extend(offers_info)
+
 print("Scraping completed.")
 
 # Print all offers information
