@@ -1,37 +1,78 @@
-# Herramienta de compras optimizadas.
+# Herramienta de Compras Optimizadas: Reducción de Costos en Comedores Populares  
 
-Este proyecto consiste en desarrollar una herramienta que permita a organizaciones sociales reducir los costos de los alimentos que compran para los espacios comunitarios donde brindan alimentos de forma gratuita. Esto requiere poder comparar precios del mismo producto en distintas presentaciones, marcas y proveedores. Para eso es necesario procesar información que no se encuentra estructurada y está en dos grandes fuentes de datos que son los presupestos generados por los proveedores y por otro la información disponible en la web. Una vez sistematizada la información queda el desafío de realizar la comparación y selección de la compra.
+## Objetivo del Proyecto  
+Desarrollar una herramienta integral para que organizaciones sociales optimicen sus compras de alimentos, reduciendo costos en los comedores populares donde brindan alimentos de manera gratuita. Esta herramienta permitirá:  
+1. **Procesar presupuestos de proveedores**, incluso si están en formatos no estructurados.  
+2. **Extraer información de ofertas disponibles en la web** para obtener precios actualizados y comparables.  
+3. **Realizar análisis y optimización** para seleccionar la mejor combinación de productos, marcas y presentaciones según precio, calidad y disponibilidad.  
 
-# Proyecto OCR para procesar presupuestos. 
+El proyecto se estructura en dos grandes módulos: **Procesamiento de Presupuestos (OCR)** y **Extracción de Datos Web (Web Scraping)**, con la posibilidad de disponibilizar la información a través de una API.  
 
-# Proyecto de Web Scraping de Ofertas de Hipermercados
+---
 
-Este proyecto consiste en un script de web scraping desarrollado en Python utilizando Selenium para obtener las ofertas de productos de la cadena de supermercados Diarco y realizar análisis de los datos obtenidos.
+## Módulo 1: Procesamiento de Presupuestos (OCR)  
 
-## Instalación
+### Objetivo  
+Permitir que presupuestos en formatos variados (PDFs, imágenes escaneadas, etc.) puedan ser sistematizados y utilizados para comparar precios y optimizar decisiones de compra.
 
-1. Clona este repositorio en tu máquina local.
-2. Instala las dependencias necesarias utilizando pip:
+### Estado Actual  
+- Investigación inicial sobre herramientas OCR.  
+- Identificación de casos de uso comunes y formatos de presupuesto.  
 
-    'pip install -r requirements.txt'
+### Próximos Pasos  
+1. **Selección de tecnología OCR:** Evaluar herramientas como Tesseract, AWS Textract, u otras alternativas.  
+2. **Estandarización de datos:** Diseñar un esquema de datos que permita estructurar la información extraída.  
+3. **Desarrollo del pipeline OCR:** Crear un script que automatice la extracción, limpieza y almacenamiento de datos de presupuestos.  
+4. **Pruebas y ajuste iterativo:** Realizar pruebas con presupuestos reales y ajustar el procesamiento según los formatos comunes.  
 
+---
 
-## Inicialización del Proyecto
+## Módulo 2: Extracción de Datos Web (Web Scraping)  
 
-1. Ejecuta el script `scrape_diarco_offers.py` para obtener las ofertas de productos de Diarco.
+### Objetivo  
+Automatizar la extracción de ofertas de productos desde sitios web de supermercados para comparar precios y mantener información actualizada.  
 
-    'python scrape_diarco_offers.py'
+### Estado Actual  
+- **Desarrollado:**  
+  - Script de web scraping para la cadena de supermercados **Diarco** utilizando Selenium.  
+  - Obtención de datos básicos de ofertas de productos.  
 
-## Acerca del Proyecto
+### Próximos Pasos  
+1. **Ampliación del scraping actual:**  
+   - Crear un sistema para recorrer automáticamente las sucursales de Diarco.  
+   - Guardar los datos obtenidos en un archivo CSV como primer paso hacia la estructuración.  
+2. **Exploración de nuevas fuentes:**  
+   - Identificar y mapear otras cadenas de supermercados con información de ofertas disponibles en la web.  
+   - Desarrollar scripts para estas nuevas cadenas y unificar la estructura de datos obtenidos.  
+3. **Integración con una base de datos:**  
+   - Evaluar si es más adecuado utilizar PostgreSQL o una base de datos NoSQL, dependiendo de la naturaleza de los datos y el volumen esperado.  
+   - Diseñar y configurar la base de datos seleccionada para un acceso más eficiente y organizado.  
+4. **Optimización matemática:**  
+   - Implementar un algoritmo que permita comparar precios de distintos supermercados y optimizar la elección de compras para una canasta específica de productos.  
 
-Este proyecto tiene como objetivo proporcionar una herramienta para obtener información sobre las ofertas de productos en supermercados y realizar análisis sobre los datos recopilados. Actualmente se enfoca en la cadena de supermercados Diarco, pero se planea expandir para incluir otras cadenas.
+---
 
-## Cosas a Desarrollar
+## Disponibilización de la Información mediante una API  
 
-A continuación se presenta una lista de tareas pendientes y mejoras sugeridas para el proyecto:
+### Tecnología Propuesta  
+- **Framework:** FastAPI para desarrollar la API de manera eficiente y escalable.  
+- **Base de Datos:** Por evaluar, considerando PostgreSQL como una opción relacional o una alternativa NoSQL en función del rendimiento y la flexibilidad requeridos.  
 
-- [ ] Almacenar los productos en un archivo CSV.
-- [ ] Crear una parte del código que recorra todas las sucursales de Diarco.
-- [ ] Explorar las webs de otros supermercados y desarrollar sus respectivos scrapers.
-- [ ] Generar una optimización matemática que permita elegir dónde comprar una determinada canasta de artículos.
-- [ ] Almacenar los productos en una base de datos para un acceso más eficiente y una mejor gestión de los datos.
+### Pasos a Seguir  
+1. Definir las rutas y endpoints necesarios para acceder a los datos procesados (ofertas, presupuestos y análisis de optimización).  
+2. Implementar los endpoints para realizar consultas filtradas según parámetros específicos (producto, marca, proveedor, entre otros).  
+3. Asegurar la correcta integración entre los módulos OCR y Web Scraping con la API.  
+4. Documentar la API utilizando herramientas como Swagger para facilitar su uso por parte de terceros.  
+
+---
+
+## Tecnologías Utilizadas  
+
+- **Lenguaje:** Python.  
+- **Librerías para OCR y Web Scraping:** Selenium, BeautifulSoup, Tesseract (o alternativa seleccionada).  
+- **Framework de API:** FastAPI.  
+- **Base de Datos:** Por definir entre PostgreSQL o una base NoSQL.  
+
+---
+
+Con esta estructura, buscamos construir una herramienta eficiente y escalable que optimice el impacto de los comedores populares en sus comunidades. ¡Manos a la obra!  
