@@ -57,7 +57,7 @@ body:
   - type: input
     id: project
     attributes:
-      label: 🗂️ Project / Milestone
+      label: "🗂️ Project / Milestone"
       description: Indica el nombre del Project o Milestone asociado (si aplica).
       placeholder: "Ejemplo: "Sprint 5" o "Project App Dashboard""
 
