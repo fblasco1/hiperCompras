@@ -1,0 +1,88 @@
+name: 🐛 Bug / Hotfix
+description: Reporte de errores o tareas de hotfix vinculadas a un Project
+title: "[BUG]: "
+labels: ["bug"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: "## 🐞 Reporte de Bug o Hotfix\nPor favor, completa la información para entender y reproducir el problema."
+
+  - type: input
+    id: resumen
+    attributes:
+      label: 📝 Resumen del problema
+      description: Breve descripción del bug o hotfix que se necesita.
+      placeholder: "Ejemplo: El botón de login no responde al click"
+    validations:
+      required: true
+
+  - type: textarea
+    id: pasos
+    attributes:
+      label: ▶️ Pasos para reproducir
+      description: Lista de pasos para que otros puedan replicar el problema.
+      placeholder: "1. Ir a...\n2. Hacer click en...\n3. Observar que..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: comportamiento_esperado
+    attributes:
+      label: ✅ Comportamiento esperado
+      description: ¿Qué debería haber sucedido en lugar del error?
+      placeholder: "El usuario debería ser redirigido al dashboard después de loguearse."
+    validations:
+      required: true
+
+  - type: textarea
+    id: comportamiento_actual
+    attributes:
+      label: ❌ Comportamiento actual
+      description: ¿Qué está sucediendo actualmente?
+      placeholder: "El botón de login no genera ninguna acción."
+    validations:
+      required: true
+
+  - type: input
+    id: entorno
+    attributes:
+      label: 🖥️ Entorno
+      description: ¿Dónde sucede? (ambiente, navegador, dispositivo, sistema operativo, etc.)
+      placeholder: "Ejemplo: Producción, Chrome v120, Windows 11"
+    validations:
+      required: true
+
+  - type: dropdown
+    id: severidad
+    attributes:
+      label: 🚨 Severidad
+      description: ¿Qué tan crítico es este bug?
+      options:
+        - 🔴 Crítico (rompe flujo clave)
+        - 🟠 Medio (afecta parcialmente)
+        - 🟢 Bajo (problema menor / visual)
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidencia
+    attributes:
+      label: 📎 Evidencia (logs o capturas)
+      description: Adjunta logs, capturas de pantalla o grabaciones que ayuden a entender mejor el problema.
+      placeholder: "Adjunta capturas o logs relevantes."
+
+  - type: input
+    id: relacionado
+    attributes:
+      label: 🔗 Relacionado a
+      description: ID de issue o PR relacionado (si aplica).
+      placeholder: "#456"
+
+  - type: input
+    id: deadline
+    attributes:
+      label: 📅 Deadline (opcional)
+      description: Fecha límite para resolver el bug (si es urgente).
+      placeholder: "20/03/2025"

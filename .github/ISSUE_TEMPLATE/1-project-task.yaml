@@ -1,0 +1,77 @@
+name: 🎯 Project Task
+description: Template para tareas vinculadas a un Project de GitHub
+title: "[TASK]: "
+labels: []
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: "## 🎯 Objetivo\nDescribe brevemente el objetivo de esta tarea o problema."
+
+  - type: textarea
+    id: descripcion
+    attributes:
+      label: 📝 Descripción detallada
+      description: Proporciona una descripción completa del issue, incluyendo contexto técnico, dependencias o detalles adicionales.
+      placeholder: Explicación detallada...
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: tipo
+    attributes:
+      label: 📊 Contexto del proyecto
+      description: Selecciona el tipo de trabajo relacionado.
+      options:
+        - label: 🧩 Feature
+        - label: 🐛 Bug
+        - label: 🛠️ Refactor
+        - label: ⚙️ Infraestructura
+        - label: 🧪 Testing
+        - label: 📈 Mejora técnica
+        - label: 📚 Documentación
+
+  - type: checkboxes
+    id: criterios
+    attributes:
+      label: ✅ Criterios de aceptación
+      description: Define qué condiciones deben cumplirse para dar la tarea por finalizada.
+      options:
+        - label: Criterio 1
+        - label: Criterio 2
+        - label: Criterio 3
+
+  - type: dropdown
+    id: prioridad
+    attributes:
+      label: ⏳ Prioridad
+      description: Indica la prioridad para el Project board.
+      options:
+        - 🚨 Alta
+        - ⚠️ Media
+        - 🕐 Baja
+    validations:
+      required: true
+
+  - type: input
+    id: project
+    attributes:
+      label: 🗂️ Project / Milestone
+      description: Indica el nombre del Project o Milestone asociado (si aplica).
+      placeholder: Ejemplo: "Sprint 5" o "Project App Dashboard"
+
+  - type: input
+    id: deadline
+    attributes:
+      label: 📅 Deadline (opcional)
+      description: Fecha límite en formato DD/MM/YYYY (si aplica).
+      placeholder: "16/04/2025"
+
+  - type: textarea
+    id: links
+    attributes:
+      label: 🔗 Links relacionados
+      description: Agrega aquí cualquier link útil (issues, PRs, documentación, diseño, etc.).
+      placeholder: "#123, PR #456, Figma link, etc."
+
