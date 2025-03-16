@@ -1,4 +1,4 @@
-# Herramienta de Compras Optimizadas: Reducción de Costos en Comedores Populares  
+# Herramienta de Compras Optimizadas
 
 ## Objetivo del Proyecto  
 Desarrollar una herramienta integral para que organizaciones sociales optimicen sus compras de alimentos, reduciendo costos en los comedores populares donde brindan alimentos de manera gratuita. Esta herramienta permitirá:  
