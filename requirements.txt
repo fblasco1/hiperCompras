@@ -2,7 +2,7 @@ attrs==23.2.0
 beautifulsoup4==4.12.3
 certifi==2024.6.2
 cffi==1.16.0
-chromedriver-py==125.0.6422.141
+chromedriver-py==133.0.6943.141
 h11==0.14.0
 idna==3.7
 markdownify==0.12.1
