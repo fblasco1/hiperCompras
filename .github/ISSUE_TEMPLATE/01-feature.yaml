@@ -1,0 +1,54 @@
+name: "🧩 Feature"
+description: "Template para proponer una nueva funcionalidad"
+title: "[FEATURE]: "
+labels: ["feature"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: "## 🧩 Nueva Feature"
+
+  - type: textarea
+    id: descripcion
+    attributes:
+      label: "📝 Descripción de la Feature"
+      description: "Explica qué se quiere implementar y el valor que aporta."
+      placeholder: "Queremos añadir la posibilidad de que los usuarios puedan..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: criterios
+    attributes:
+      label: "✅ Criterios de aceptación"
+      description: "Define cuándo consideraremos la Feature como terminada."
+      placeholder: "- El usuario puede...\n- Se muestra feedback de éxito..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: notas
+    attributes:
+      label: "🗒️ Notas adicionales"
+      description: "Mockups, APIs, o cualquier link adicional."
+      placeholder: "Link a Figma, referencias técnicas, etc."
+
+  - type: dropdown
+    id: prioridad
+    attributes:
+      label: "⏳ Prioridad"
+      description: "Define la urgencia."
+      options:
+        - "🚨 Alta"
+        - "⚠️ Media"
+        - "🕐 Baja"
+    validations:
+      required: true
+
+  - type: input
+    id: deadline
+    attributes:
+      label: "📅 Deadline (opcional)"
+      description: "Fecha límite en formato DD/MM/YYYY (si aplica)."
+      placeholder: "16/04/2025"

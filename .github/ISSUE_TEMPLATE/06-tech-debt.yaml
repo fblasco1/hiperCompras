@@ -1,0 +1,26 @@
+name: "📈 Mejora técnica"
+description: "Template para mejoras técnicas internas"
+title: "[MEJORA]: "
+labels: ["tech-debt"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: "## 📈 Mejora técnica"
+
+  - type: textarea
+    id: descripcion
+    attributes:
+      label: "📝 Descripción de la mejora"
+      description: "Describe qué aspecto técnico se mejorará."
+      placeholder: "Optimizar queries de la base de datos..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: impacto
+    attributes:
+      label: "💡 Beneficio esperado"
+      description: "¿Cómo impactará esta mejora en el proyecto?"
+      placeholder: "Mejorará la performance de las consultas SQL en..."

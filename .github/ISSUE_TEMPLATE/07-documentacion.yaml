@@ -1,0 +1,26 @@
+name: "📚 Documentación"
+description: "Template para tareas de documentación"
+title: "[DOCS]: "
+labels: ["documentation"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: "## 📚 Actualización o creación de documentación"
+
+  - type: textarea
+    id: descripcion
+    attributes:
+      label: "📝 Descripción"
+      description: "¿Qué documento se va a crear o actualizar?"
+      placeholder: "Actualizar README del microservicio X..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alcance
+    attributes:
+      label: "📄 Alcance"
+      description: "¿Qué se incluirá en la documentación?"
+      placeholder: "Diagramas, pasos de instalación, API reference..."

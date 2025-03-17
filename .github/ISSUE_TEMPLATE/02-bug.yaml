@@ -1,0 +1,62 @@
+name: "🐛 Bug"
+description: "Template para reportar errores"
+title: "[BUG]: "
+labels: ["bug"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: "## 🐛 Reporte de Bug"
+
+  - type: textarea
+    id: descripcion
+    attributes:
+      label: "📝 Descripción del Bug"
+      description: "Describe el problema observado."
+      placeholder: "El botón de login no funciona al hacer click."
+    validations:
+      required: true
+
+  - type: textarea
+    id: pasos
+    attributes:
+      label: "▶️ Pasos para reproducir"
+      description: "Instrucciones para replicar el bug."
+      placeholder: "1. Ir a...\n2. Hacer click en...\n3. Observar que..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: esperado
+    attributes:
+      label: "✅ Comportamiento esperado"
+      description: "¿Qué debería ocurrir?"
+      placeholder: "Debería redirigir al dashboard."
+    validations:
+      required: true
+
+  - type: textarea
+    id: evidencia
+    attributes:
+      label: "📎 Evidencia (opcional)"
+      description: "Logs, capturas de pantalla, etc."
+      placeholder: "Adjuntar logs o screenshots."
+
+  - type: dropdown
+    id: severidad
+    attributes:
+      label: "🚨 Severidad"
+      options:
+        - "🔴 Crítico"
+        - "🟠 Medio"
+        - "🟢 Bajo"
+    validations:
+      required: true
+
+  - type: input
+    id: deadline
+    attributes:
+      label: 📅 Deadline (opcional)
+      description: Fecha límite para resolver el bug (si es urgente).
+      placeholder: "20/03/2025"

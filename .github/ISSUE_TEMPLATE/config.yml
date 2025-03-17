@@ -1,0 +1,31 @@
+blank_issues_enabled: false
+contact_links: []
+
+issue_templates:
+  - name: 🧩 Feature
+    description: Proponer una nueva funcionalidad para el proyecto.
+    file: 01-feature.yaml
+
+  - name: 🐛 Bug
+    description: Reportar un bug o problema encontrado.
+    file: 02-bug.yaml
+
+  - name: 🛠️ Refactor
+    description: Proponer una tarea de refactorización de código.
+    file: 03-refactor.yaml
+
+  - name: ⚙️ Infraestructura
+    description: Crear o modificar aspectos de infraestructura.
+    file: 04-infraestructura.yaml
+
+  - name: 🧪 Testing
+    description: Tareas relacionadas con tests unitarios, de integración, etc.
+    file: 05-testing.yaml
+
+  - name: 📈 Mejora técnica
+    description: Saldar deuda técnica o mejoras internas no visibles para el usuario.
+    file: 06-mejora-tecnica.yaml
+
+  - name: 📚 Documentación
+    description: Crear o actualizar documentación.
+    file: 07-documentacion.yaml

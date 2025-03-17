@@ -1,0 +1,28 @@
+name: "⚙️ Infraestructura"
+description: "Template para tareas de infraestructura"
+title: "[INFRA]: "
+labels: ["infra"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: "## ⚙️ Tarea de Infraestructura"
+
+  - type: textarea
+    id: descripcion
+    attributes:
+      label: "📝 Descripción"
+      description: "Describe la tarea de infraestructura."
+      placeholder: "Configurar CI/CD en GitHub Actions..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: impacto
+    attributes:
+      label: "🌍 Impacto esperado"
+      description: "¿Qué mejora o solución traerá esta tarea?"
+      placeholder: "Despliegues automáticos, reducción de errores humanos..."
+    validations:
+      required: true

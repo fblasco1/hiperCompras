@@ -1,0 +1,28 @@
+name: "🧪 Testing"
+description: "Template para tareas relacionadas con tests"
+title: "[TEST]: "
+labels: ["testing"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: "## 🧪 Tarea de Testing"
+
+  - type: textarea
+    id: descripcion
+    attributes:
+      label: "📝 Descripción de la tarea"
+      description: "¿Qué se va a testear o mejorar en los tests?"
+      placeholder: "Agregar tests unitarios para la función X..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: alcance
+    attributes:
+      label: "🧩 Alcance"
+      description: "¿Qué módulos o componentes cubre esta tarea?"
+      placeholder: "Servicios de autenticación, rutas API..."
+    validations:
+      required: true

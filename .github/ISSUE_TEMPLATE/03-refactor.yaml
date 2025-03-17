@@ -1,0 +1,35 @@
+name: "🛠️ Refactor"
+description: "Template para tareas de refactorización"
+title: "[REFACTOR]: "
+labels: ["refactor"]
+assignees: []
+
+body:
+  - type: markdown
+    attributes:
+      value: "## 🛠️ Tarea de Refactor"
+
+  - type: textarea
+    id: descripcion
+    attributes:
+      label: "📝 Descripción del Refactor"
+      description: "Explica qué parte del código se debe mejorar."
+      placeholder: "Refactorizar el módulo de autenticación para..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: motivacion
+    attributes:
+      label: "🎯 Motivación"
+      description: "Razón para realizar este refactor."
+      placeholder: "El código es difícil de mantener por..."
+    validations:
+      required: true
+
+  - type: textarea
+    id: criterios
+    attributes:
+      label: "✅ Criterios de finalización"
+      description: "¿Qué validará que el refactor está completo?"
+      placeholder: "No romper tests existentes, performance mejorada..."
